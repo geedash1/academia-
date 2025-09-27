@@ -125,9 +125,9 @@ bool ShowLoginWindow()
         std::this_thread::sleep_for(std::chrono::milliseconds(5));
     }
 
-    // do NOT destroy device/window here — main GUI will reuse them
     gui::isRunning = true;
 
     return true;
 
 }
+
