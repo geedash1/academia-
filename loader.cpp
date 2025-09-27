@@ -31,7 +31,7 @@ namespace loader
 
             if (ImGui::Button("Login", ImVec2(380, 0)))
             {
-                // Dummy check — replace with your own auth logic
+                
                 if (std::string(username) == "test" && std::string(password) == "1234")
                 {
                     loggedIn = true;
@@ -53,8 +53,9 @@ namespace loader
         }
         else
         {
-            // Once logged in, render the main gui
+            
             gui::Render();
         }
     }
 }
+
