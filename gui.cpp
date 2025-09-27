@@ -69,7 +69,6 @@ long __stdcall WindowProcess(HWND hwnd, UINT message, WPARAM wParam, LPARAM lPar
     return DefWindowProc(hwnd, message, wParam, lParam);
 }
 
-// ---------------- Window ----------------
 void gui::CreateHWindow(const char* windowName) noexcept
 {
     HINSTANCE hInstance = GetModuleHandleA(nullptr);
@@ -109,7 +108,6 @@ void gui::DestroyHWindow() noexcept
     UnregisterClass(windowClass.lpszClassName, windowClass.hInstance);
 }
 
-// ---------------- DirectX ----------------
 bool gui::CreateDevice() noexcept
 {
     d3d = Direct3DCreate9(D3D_SDK_VERSION);
@@ -143,7 +141,7 @@ void gui::DestroyDevice() noexcept
     if (d3d) { d3d->Release(); d3d = nullptr; }
 }
 
-// ---------------- ImGui ----------------
+
 void gui::SetupImGuiStyle() noexcept
 {
     ImGuiStyle& style = ImGui::GetStyle();
@@ -186,7 +184,6 @@ void gui::DestroyImGui() noexcept
     ImGui::DestroyContext();
 }
 
-// ---------------- Rendering ----------------
 void gui::BeginRender() noexcept
 {
     MSG msg;
@@ -267,12 +264,12 @@ void gui::Render() noexcept
     {
         ImGui::Text("Increasers Options");
 
-        // Static variables to store slider values
+       
         static float speedMultiplier = 1.0f;     // 1x = normal speed
         static float critPercent = 0.0f;         // 0% to 100%
         static float damagePercent = 0.0f;       // 0% to 200%
 
-        // Sliders
+        
         ImGui::SliderFloat("Speed Multiplier", &speedMultiplier, 1.0f, 5.0f, "%.1fx");
         ImGui::SliderFloat("Crit %", &critPercent, 0.0f, 100.0f, "%.0f%%");
         ImGui::SliderFloat("Damage %", &damagePercent, 0.0f, 200.0f, "%.0f%%");
@@ -292,3 +289,4 @@ void gui::Render() noexcept
     ImGui::EndChild();
     ImGui::End();
 }
+
